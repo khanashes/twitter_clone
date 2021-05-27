@@ -12,6 +12,7 @@ class MyObtainTokenPairView(TokenObtainPairView):
 
 
 # registraton view for registring user
+# post api/register/
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     permission_classes = (AllowAny,)

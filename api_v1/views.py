@@ -10,6 +10,14 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import APIException
 from rest_framework.views import APIView
 # Create your views here.
+
+'''
+Post tweet/ to post a tweet
+Get tweet/ to get tweets of followers and their own
+Delete tweet/ to delete the tweet
+Put tweet/ to update the tweet
+Patch tweet/ to partially update
+'''
 class TweetViewSet(viewsets.ModelViewSet):
     queryset = Tweet.objects.all()
     serializer_class = TweetSerilazer
@@ -28,6 +36,7 @@ class TweetViewSet(viewsets.ModelViewSet):
 
 
     def destroy(self, request, *args, **kwargs):
+        # object level permission checking
         tweet = self.get_object()
         tweet.delete()
         return Response(data='Deleted')
@@ -42,7 +51,11 @@ class TweetViewSet(viewsets.ModelViewSet):
         tweet.delete()
         return Response(data='partially updated')
 
-
+'''
+post follow/ to follow the user
+delete follow/ to unfollow the user
+get follow/ to get list of followers
+'''
 class FollowView(mixins.CreateModelMixin, mixins.DestroyModelMixin, mixins.ListModelMixin, viewsets.GenericViewSet):
     serializer_class = FolloweSerializer
     queryset = Follow.objects.all()
@@ -58,7 +71,7 @@ class FollowView(mixins.CreateModelMixin, mixins.DestroyModelMixin, mixins.ListM
             raise Custom409(e.__str__())
 
 
-
+# Custom exception handling when unique contraint exception arise
 class Custom409(APIException):
     status_code = status.HTTP_409_CONFLICT
     default_detail = "You can't follow again"
