@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import django_heroku
 from datetime import timedelta
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -152,3 +153,4 @@ MEDIA_URL = '/media/'
 
 # Path where media is stored
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+django_heroku.settings(locals())
