@@ -156,7 +156,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 django_heroku.settings(locals())
 # Add these new lines
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'twitter_clone/static'),
+    os.path.join(BASE_DIR, 'app/static'),
 )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
