@@ -42,13 +42,16 @@ INSTALLED_APPS = [
     # third party apps
     'rest_framework',
     'django_cleanup.apps.CleanupConfig',
+    'corsheaders',
     # custom apps
     'api_v1',
     'user',
 ]
 
 MIDDLEWARE = [
+    
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -161,3 +164,4 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+CORS_ORIGIN_ALLOW_ALL = True
