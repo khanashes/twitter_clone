@@ -14,6 +14,8 @@ from pathlib import Path
 import django_heroku
 from datetime import timedelta
 import os
+import cloudinary
+import cloudinary_storage
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -43,6 +45,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_cleanup.apps.CleanupConfig',
     'corsheaders',
+    'cloudinary',
+    'cloudinary_storage',
     # custom apps
     'api_v1',
     'user',
@@ -187,3 +191,9 @@ STATICFILES_DIRS = (
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 CORS_ORIGIN_ALLOW_ALL = True
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': "dswz4oug0",
+    'API_KEY': "522595889586793",
+    'API_SECRET': "YhuZXOg2-q2ewyCH22NdzUix_aQ"
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
