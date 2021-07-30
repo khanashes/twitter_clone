@@ -7,6 +7,3 @@ router = DefaultRouter()
 router.register(r'tweet', TweetViewSet, basename="tweet")
 router.register(r'follow', FollowView, basename="follow")
 urlpatterns  = router.urls
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)

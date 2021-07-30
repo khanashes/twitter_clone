@@ -44,9 +44,9 @@ INSTALLED_APPS = [
     # third party apps
     'rest_framework',
     'django_cleanup.apps.CleanupConfig',
-    'corsheaders',
-    'cloudinary',
+    'corsheaders',  
     'cloudinary_storage',
+    'cloudinary',
     # custom apps
     'api_v1',
     'user',
@@ -173,13 +173,6 @@ SIMPLE_JWT = {
 'SLIDING_TOKEN_LIFETIME': timedelta(days=10),
 'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=20),
 }
-# Base url to serve media files
-MEDIA_URL = '/media/'
-
-# Path where media is stored
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-django_heroku.settings(locals())
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -189,11 +182,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-CORS_ORIGIN_ALLOW_ALL = True
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': "dswz4oug0",
-    'API_KEY': "522595889586793",
-    'API_SECRET': "YhuZXOg2-q2ewyCH22NdzUix_aQ"
-}
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+             'CLOUD_NAME': 'dswz4oug0',
+             'API_KEY': '522595889586793',
+             'API_SECRET': 'YhuZXOg2-q2ewyCH22NdzUix_aQ'
+            }
+MEDIA_URL = '/media/'  # or any prefix you choose
+DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'
